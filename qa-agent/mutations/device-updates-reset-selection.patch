@@ -1,0 +1,13 @@
+diff --git a/frontend/src/store/telemetry.store.ts b/frontend/src/store/telemetry.store.ts
+index 1e5c15c..0000000 100644
+--- a/frontend/src/store/telemetry.store.ts
++++ b/frontend/src/store/telemetry.store.ts
+@@ -53,7 +53,7 @@ export const useTelemetryStore = create<TelemetryState>((set, get) => ({
+   setDevices(devices) {
+     const { selectedDeviceId: current, data, track } = get();
+     const ids = new Set(devices.map((d) => d.id));
+-    const stillThere = current !== null && ids.has(current);
++    const stillThere = false;
+     const firstDrone = devices.find((d) => d.type === 'drone')?.id ?? devices[0]?.id ?? null;
+     const prune = <T,>(rec: Record<string, T>): Record<string, T> =>
+       Object.fromEntries(Object.entries(rec).filter(([id]) => ids.has(id)));

@@ -1,0 +1,27 @@
+id: "0006"
+version: 1
+category: visual_ui
+title: Cockpit loads the connected device list
+target_flow: flows.md#cockpit-connects-and-loads-devices
+expected: When the operator opens the Cockpit, the socket becomes connected and the device list shows the first and last simulated drone rows with flight-status pills.
+preconditions: [simulator_reset, simulator_started, faults_cleared]
+actions: []
+assertions:
+  - locator: '[data-testid="socket-status"]'
+    condition: text_eventually_equals
+    value: socket connected
+    timeout_ms: 30000
+  - locator: '[data-testid="device-row-drone-1"]'
+    condition: visible
+    timeout_ms: 30000
+  - locator: '[data-testid="device-row-drone-4"]'
+    condition: visible
+    timeout_ms: 30000
+  - locator: '[data-testid="device-row-drone-1"] .pill:last-child'
+    condition: visible
+    timeout_ms: 10000
+  - locator: '[data-testid="device-row-drone-4"] .pill:last-child'
+    condition: visible
+    timeout_ms: 10000
+verify: dom_state
+tags: [baseline, visual_ui, devices]

@@ -1,0 +1,19 @@
+id: "0008"
+version: 1
+category: functional_ui
+title: Takeoff alert is shown in the Cockpit
+target_flow: flows.md#alert-toast-display-and-dismissal
+expected: When Drone 1 sends a takeoff alert, the Cockpit shows a toast containing the drone id and message.
+preconditions: [simulator_reset, simulator_started, faults_cleared, cockpit_loaded, drone_1_selected]
+actions:
+  - api:
+      method: POST
+      path: /api/control/command
+      body: { deviceId: drone-1, type: takeoff }
+assertions:
+  - locator: '[data-testid="alert-toast"]'
+    condition: text_eventually_contains
+    value: 'drone-1 Drone 1 taking off'
+    timeout_ms: 10000
+verify: dom_state
+tags: [baseline, alerts]

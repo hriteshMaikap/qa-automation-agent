@@ -1,0 +1,13 @@
+diff --git a/frontend/src/socket/socket-client.ts b/frontend/src/socket/socket-client.ts
+index d43941b..0000000 100644
+--- a/frontend/src/socket/socket-client.ts
++++ b/frontend/src/socket/socket-client.ts
+@@ -27,6 +27,6 @@ export class SocketClient {
+     socket.on('connect', () => {
+       this.setStatus('connected');
+       for (const topic of this.handlers.keys()) {
+-        socket.emit(CLIENT_EVENTS.SUBSCRIBE, { topic });
++        socket.emit(CLIENT_EVENTS.SUBSCRIBE, { topic: `${topic}/stale` });
+       }
+     });
+ 

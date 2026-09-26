@@ -1,0 +1,12 @@
+diff --git a/frontend/src/components/DeviceList.tsx b/frontend/src/components/DeviceList.tsx
+index 7a4bf5c..0000000 100644
+--- a/frontend/src/components/DeviceList.tsx
++++ b/frontend/src/components/DeviceList.tsx
+@@ -31,5 +31,5 @@ export function DeviceList() {
+               onClick={() => {
+                 select(drone.id);
+-                panTo(drone.id);
++                panTo(dock?.id ?? drone.id);
+               }}
+             >
+               <div className="device-main">

@@ -1,0 +1,20 @@
+id: "0007"
+version: 1
+category: map_geospatial
+title: Operator can switch the live map to 2D view
+target_flow: flows.md#map-device-and-track-visualization
+expected: The Cockpit renders the map and selecting 2D changes the map view control to the active 2D state.
+preconditions: [simulator_reset, simulator_started, faults_cleared, cockpit_loaded, drone_1_selected]
+actions:
+  - browser:
+      locator: '[data-testid="map-view-2d"]'
+      action: click
+assertions:
+  - locator: '[data-testid="map-canvas"]'
+    condition: visible
+    timeout_ms: 30000
+  - locator: '[data-testid="map-view-2d"][aria-pressed="true"]'
+    condition: visible
+    timeout_ms: 10000
+verify: dom_state
+tags: [baseline, map, geospatial, view]

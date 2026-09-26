@@ -37,6 +37,16 @@ record `healed` only on success. Otherwise judge observed evidence against the
 exact flow anchor as `matches_expected` or `violates_expected`; judgment cannot
 revise the oracle. Update procedural memory only after a pass or successful heal.
 
+After a deterministic pass or successful heal, update or create
+`qa-agent/logs/procedural/<scenario-id>.json` atomically. Preserve the latest
+selector fingerprint and merge a `behavior_observations` entry keyed by the
+scenario ID, exact flow anchor, and assertion. Each entry records the result
+(`pass` or `healed`), immutable run ID, evidence directory, assertion text, and
+observation timestamp. Keep failed or judgment-only attempts in immutable run
+logs; do not promote them to a passing procedural baseline. This memory is
+advisory history for future scenario generation and locator repair only: it
+must never alter the scenario oracle, expected value, or flow anchor.
+
 Report IDs, results, tier reached, evidence paths, and concise genuine findings.
 An empty oracle, unavailable stack, missing Playwright setup, or missing video is
 a blocker, never a pass.
