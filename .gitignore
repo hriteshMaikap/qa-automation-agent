@@ -3,3 +3,6 @@ dist
 .env
 *.log
 .DS_Store
+qa-agent/evidence/
+qa-agent/logs/runs/
+qa-agent/logs/procedural/

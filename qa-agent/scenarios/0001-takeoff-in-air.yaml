@@ -1,0 +1,19 @@
+id: "0001"
+version: 1
+category: states
+title: Takeoff changes the selected drone to in-flight
+target_flow: flows.md#takeoff-produces-in-air-flight-status
+expected: After the takeoff command is accepted for Drone 1, the Cockpit displays in_flight for the selected drone.
+preconditions: [simulator_reset, simulator_started, faults_cleared, cockpit_loaded, drone_1_selected]
+actions:
+  - api:
+      method: POST
+      path: /api/control/command
+      body: { deviceId: drone-1, type: takeoff }
+assertions:
+  - locator: '[data-testid="status-flight"]'
+    condition: text_eventually_equals
+    value: in_flight
+    timeout_ms: 10000
+verify: dom_state
+tags: [baseline, states, takeoff]

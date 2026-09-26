@@ -1,0 +1,28 @@
+{
+  "browser": {
+    "isolated": true,
+    "contextOptions": {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    }
+  },
+  "outputDir": "qa-agent/evidence/mcp",
+  "outputMaxSize": 104857600,
+  "console": {
+    "level": "warning"
+  },
+  "testIdAttribute": "data-testid",
+  "timeouts": {
+    "action": 10000,
+    "navigation": 30000,
+    "expect": 10000,
+    "settle": 500
+  },
+  "snapshot": {
+    "mode": "full",
+    "boxes": false
+  },
+  "codegen": "typescript"
+}

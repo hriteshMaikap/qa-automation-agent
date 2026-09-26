@@ -1,0 +1,13 @@
+diff --git a/backend/public/dashboard.html b/backend/public/dashboard.html
+index 96c6589..89f838b 100644
+--- a/backend/public/dashboard.html
++++ b/backend/public/dashboard.html
+@@ -170,7 +170,7 @@
+         <td class="num">${fmt(gp?.home_position?.distance, ' m', 0)}</td>
+         <td><span class="pill ${vid ? 'ok' : ''}">${vid ? 'on' : 'off'}</span></td>
+         <td class="row">
+-          <button data-cmd="takeoff" data-id="${d.id}" ${inAir ? 'disabled' : ''} data-testid="dash-takeoff-${d.id}">Take off</button>
++          <button data-cmd="takeoff" data-id="${d.id}" disabled data-testid="dash-takeoff-${d.id}">Take off</button>
+           <button data-cmd="land" data-id="${d.id}" ${inAir ? '' : 'disabled'} data-testid="dash-land-${d.id}">Land</button>
+           <button data-video="${vid ? 'stop' : 'start'}" data-id="${d.id}">${vid ? 'Stop video' : 'Start video'}</button>
+           <button class="danger" data-remove="${d.id}">Remove</button>
