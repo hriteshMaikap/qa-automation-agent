@@ -82,5 +82,3 @@ Trigger: A device sends an alert.
 Expected observable behavior: The Cockpit displays a status toast containing the device id and alert message. The operator can dismiss it.
 
 Timing: The source automatically dismisses each toast after 6 seconds.
-
-NOTE: NEVER USE CONTROL PANEL FOR TESTING, the main app testing is the only scope. 

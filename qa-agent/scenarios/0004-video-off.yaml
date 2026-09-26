@@ -1,0 +1,23 @@
+id: "0004"
+version: 1
+category: video_media
+title: Disabled selected-drone video shows the off state
+target_flow: flows.md#fpv-video-display-and-recovery
+expected: When video is disabled for the selected drone, the FPV tile shows off and Video off.
+preconditions: [simulator_reset, simulator_started, faults_cleared, cockpit_loaded, drone_1_selected]
+actions:
+  - api:
+      method: POST
+      path: /api/control/video
+      body: { action: stop, deviceId: drone-1 }
+assertions:
+  - locator: '[data-testid="video-state"]'
+    condition: text_eventually_equals
+    value: off
+    timeout_ms: 10000
+  - locator: '[data-testid="video-player"]'
+    condition: text_eventually_equals
+    value: 'Video off'
+    timeout_ms: 10000
+verify: dom_state
+tags: [baseline, video]

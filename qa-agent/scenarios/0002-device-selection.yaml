@@ -1,0 +1,22 @@
+id: "0002"
+version: 1
+category: functional_ui
+title: Selecting a device updates the Cockpit detail panels
+target_flow: flows.md#device-selection-and-map-pan
+expected: Selecting Drone 2 in the device list displays Drone 2 in the telemetry and FPV panel headers.
+preconditions: [simulator_reset, simulator_started, faults_cleared, cockpit_loaded]
+actions:
+  - browser:
+      locator: '[data-testid="device-row-drone-2"]'
+      action: click
+assertions:
+  - locator: 'h2.panel-title > span:first-child'
+    condition: text_eventually_equals
+    value: 'Drone Telemetry · Drone 2'
+    timeout_ms: 10000
+  - locator: '.video-header'
+    condition: text_eventually_contains
+    value: 'FPV · Drone 2'
+    timeout_ms: 10000
+verify: dom_state
+tags: [baseline, device-selection]

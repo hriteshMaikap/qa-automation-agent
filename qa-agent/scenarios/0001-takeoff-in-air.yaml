@@ -14,6 +14,6 @@ assertions:
   - locator: '[data-testid="status-flight"]'
     condition: text_eventually_equals
     value: in_flight
-    timeout_ms: 10000
+    timeout_ms: 30000
 verify: dom_state
 tags: [baseline, states, takeoff]

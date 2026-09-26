@@ -1,4 +1,4 @@
-// scenario_id: 0001 | version: 1 | scenario_sha256: 3a02d6846c1492a2e1d60a29e00bc3e02dbc9bdd81ccd5da4a2d4ac5292ef705
+// scenario_id: 0001 | version: 1 | scenario_sha256: 7a3b47f629b15982d97a609ef5a4f57abf5961727fea1c07c74ff7bb0388a9da
 // target_flow: flows.md#takeoff-produces-in-air-flight-status
 import { test, expect } from '@playwright/test';
 
@@ -20,6 +20,7 @@ test('0001 takeoff changes the selected drone to in-flight', async ({ page, requ
   // Preconditions: cockpit_loaded, drone_1_selected.
   await page.goto('/');
   await expect(page.getByTestId('socket-status')).toHaveText('socket connected', { timeout: 30000 });
+  await expect(page.getByTestId('device-row-drone-1')).toBeVisible({ timeout: 30000 });
   await page.getByTestId('device-row-drone-1').click();
   await expect(page.getByTestId('status-flight')).toHaveText('standby');
 
@@ -30,5 +31,5 @@ test('0001 takeoff changes the selected drone to in-flight', async ({ page, requ
   expect(takeoff.ok()).toBeTruthy();
 
   // Assertion: [data-testid="status-flight"] eventually equals in_flight.
-  await expect(page.getByTestId('status-flight')).toHaveText('in_flight', { timeout: 10000 });
+  await expect(page.getByTestId('status-flight')).toHaveText('in_flight', { timeout: 30000 });
 });

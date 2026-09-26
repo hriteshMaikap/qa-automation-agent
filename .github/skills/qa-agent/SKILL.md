@@ -10,14 +10,6 @@ Read only the scenario, its exact flow section, corresponding procedural memory,
 and test/harness. Never read `qa-agent/meta/`; do not modify application code,
 the oracle, or scenario intent while diagnosing.
 
-Scenarios must adhere to the reviewed observable contract, not inferred or
-overly strict implementation details. Assert exact text, formatting, DOM scope,
-and timing only when the flow or reviewed runtime behavior establishes them;
-otherwise use the narrowest stable observable assertion and allow documented
-state-transition timing. When a scenario exposes a mismatch, update the
-scenario and cached spec to match the actual contract before judging the
-application as failed.
-
 Follow `qa-agent/BLUEPRINT.md`: compile only when a spec is absent, its header
 hash/version differs, or a prior locator repair failed; otherwise run the cached
 spec with the Playwright CLI. MCP browser tools may inspect live DOM, but never

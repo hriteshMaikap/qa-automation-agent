@@ -1,0 +1,23 @@
+id: "0003"
+version: 1
+category: telemetry
+title: Selected drone telemetry renders published values
+target_flow: flows.md#drone-telemetry-display
+expected: A selected drone shows its standby status and populated battery, altitude, speed, heading, wind, and home-distance telemetry.
+preconditions: [simulator_reset, simulator_started, faults_cleared, cockpit_loaded, drone_1_selected]
+actions: []
+assertions:
+  - locator: '[data-testid="status-flight"]'
+    condition: text_eventually_equals
+    value: standby
+    timeout_ms: 10000
+  - locator: '[data-testid="telemetry-battery"]'
+    condition: text_eventually_matches
+    value: '^100 %$'
+    timeout_ms: 10000
+  - locator: '[data-testid="telemetry-alt-rlt"], [data-testid="telemetry-alt-agl"], [data-testid="telemetry-alt-asl"], [data-testid="telemetry-hspeed"], [data-testid="telemetry-vspeed"], [data-testid="telemetry-heading"], [data-testid="telemetry-wind"], [data-testid="telemetry-home-distance"]'
+    condition: all_eventually_not_equals
+    value: '—'
+    timeout_ms: 10000
+verify: dom_state
+tags: [baseline, telemetry]

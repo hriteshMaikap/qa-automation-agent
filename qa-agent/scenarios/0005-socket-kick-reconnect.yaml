@@ -1,0 +1,19 @@
+id: "0005"
+version: 1
+category: network_recovery
+title: Cockpit reconnects after a server socket kick
+target_flow: flows.md#socket-status-and-reconnect
+expected: After a server-side socket kick, the Cockpit returns to the connected socket state.
+preconditions: [simulator_reset, simulator_started, faults_cleared, cockpit_loaded]
+actions:
+  - api:
+      method: POST
+      path: /api/control/fault
+      body: { kind: socket-kick }
+assertions:
+  - locator: '[data-testid="socket-status"]'
+    condition: text_eventually_equals
+    value: 'socket connected'
+    timeout_ms: 30000
+verify: dom_state
+tags: [baseline, fault, reconnect]
