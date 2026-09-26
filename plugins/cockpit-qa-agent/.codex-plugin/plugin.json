@@ -1,0 +1,23 @@
+{
+  "name": "cockpit-qa-agent",
+  "version": "0.1.0",
+  "description": "Scenario-driven Level-1 QA workflows for the FlytBase cockpit.",
+  "author": {
+    "name": "FlytBase QA team"
+  },
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Cockpit QA Agent",
+    "shortDescription": "Generate and run durable cockpit QA scenarios.",
+    "longDescription": "Creates scenario specifications and cached Playwright tests with evidence-preserving execution and constrained locator repair.",
+    "developerName": "FlytBase QA team",
+    "category": "Developer Tools",
+    "capabilities": ["Write"],
+    "defaultPrompt": [
+      "Generate three baseline cockpit QA scenarios.",
+      "Compile and run cockpit QA scenarios."
+    ],
+    "brandColor": "#2563EB"
+  }
+}
